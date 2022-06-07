@@ -9,8 +9,8 @@ const http = require('http').createServer(app);
 
 dotenv.config();
 // const db = require("./src/config/db");
-const Router = require('./routes/index');
 const FrontendRouter = require('./routes/frontend/index');
+const BackendRouter = require('./routes/backend/index');
 
 app.use(cors({ origin: '*' }));
 
@@ -24,9 +24,8 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(express.json({ limit: '50mb', strict: false }));
 
-app.use(Router);
+app.use(BackendRouter);
 app.use('/', FrontendRouter);
-
 app.use(express.static(path.join(__dirname, 'public')));
 
 // database connection
