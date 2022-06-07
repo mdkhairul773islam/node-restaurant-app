@@ -1,9 +1,13 @@
 const express = require('express');
+const path = require('path');
 const fileUpload = require('express-fileupload');
 const cors = require('cors');
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
 const app = require('express')();
 const http = require('http').createServer(app);
-const path = require('path');
+
+dotenv.config();
 // const db = require("./src/config/db");
 const Router = require('./routes/index');
 const FrontendRouter = require('./routes/frontend/index');
@@ -25,10 +29,20 @@ app.use('/', FrontendRouter);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+// database connection
+mongoose
+  .connect(process.env.MONGO_CONNECTION_STRING, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log('database connection successful!'))
+  .catch((err) => console.log(err));
+
 /* db.raw("select 1+1 as result").catch((err) => {
   console.log(err);
   process.exit(1);
 }); */
 
-const port = process.env.PORT || 9000;
-http.listen(port, () => console.log(`Server Is Running On ${port}`));
+http.listen(process.env.PORT, () => {
+  console.log(`app listening to port ${process.env.PORT}`);
+});
