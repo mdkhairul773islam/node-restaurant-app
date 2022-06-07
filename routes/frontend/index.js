@@ -7,6 +7,6 @@ router.get('/', (req, res) => {
 });
 
 router.get('/contact', (req, res) => {
-  res.render('contact', { title: 'Hey', message: 'Hello there!' });
+  res.render('contact', { title: 'This is contact page', message: 'Hello there!' });
 });
 module.exports = router;
