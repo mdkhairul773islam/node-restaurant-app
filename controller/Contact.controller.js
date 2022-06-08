@@ -36,13 +36,13 @@ const DeleteContact = (req, res) => {
 const UpdateContact = async (req, res) => {
   try {
     const newContact = req.body;
-
-    const result = await Contact.findOneAndUpdate(
+    console.log('id', req.body.id);
+    const result = await Contact.findByIdAndUpdate(
       { _id: req.body.id },
       { $set: newContact }, { new: true },
     );
     res.status(200).json({
-      message: 'Contact was added successfully!',
+      message: 'Contact was update successfully!',
       data: result,
     });
   } catch (error) {
