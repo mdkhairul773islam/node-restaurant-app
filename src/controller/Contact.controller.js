@@ -11,7 +11,7 @@ const AddContact = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       errors: {
-        msg: 'Unknown error occured!',
+        message: 'Unknown error occured!',
       },
     });
   }
