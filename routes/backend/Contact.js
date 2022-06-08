@@ -11,7 +11,7 @@ const {
 } = require('../../controller/Contact.controller');
 
 Router.post('/', AddContact);
-Router.put('/', UpdateContact);
+Router.put('/:id', UpdateContact);
 Router.get('/', GetContact);
 Router.get('/list', GetContactList);
 Router.delete('/', DeleteContact);

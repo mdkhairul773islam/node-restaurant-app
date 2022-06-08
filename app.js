@@ -30,7 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // database connection
 mongoose
-  .connect(process.env.MONGO_URI, {
+  // .connect(process.env.MONGO_URI, {
+  .connect(process.env.MONGO_CONNECTION_STRING, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
