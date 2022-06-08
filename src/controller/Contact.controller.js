@@ -37,16 +37,10 @@ const UpdateContact = async (req, res) => {
   try {
     const { id } = req.params;
     const newContact = req.body;
-<<<<<<< HEAD
-    console.log('id', req.body.id);
     const result = await Contact.findByIdAndUpdate(
-      { _id: req.body.id },
+      { _id: id },
       { $set: newContact }, { new: true },
     );
-=======
-
-    const result = await Contact.findOneAndUpdate({ _id: id }, { $set: newContact }, { new: true });
->>>>>>> ff9dfdbf3eeda6c4a0342cbf0cb05d3dbe0b37d8
     res.status(200).json({
       message: 'Contact was update successfully!',
       data: result,
@@ -59,7 +53,6 @@ const UpdateContact = async (req, res) => {
     });
   }
 };
-
 const GetContactList = (req, res) => {
   res.send('GetContactList!');
 };
