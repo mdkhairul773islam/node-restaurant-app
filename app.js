@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // database connection
 mongoose
-  .connect(process.env.MONGO_URI, {
+  .connect('mongodb+srv://mdkhairul773:mdkhairul773@restaurant.u6ebh.mongodb.net/?retryWrites=true&w=majority', {
     dbName: 'restaurantdb',
     useNewUrlParser: true,
     useUnifiedTopology: true,
